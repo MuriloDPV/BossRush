@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Barra em estilo pixel art: fundo escuro com contorno e preenchimento reto (sem cantos redondos) -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background">
+        <shape android:shape="rectangle">
+            <solid android:color="#3C1E28" />
+            <stroke android:width="2dp" android:color="#16142E" />
+        </shape>
+    </item>
+    <item
+        android:id="@android:id/progress"
+        android:bottom="2dp"
+        android:left="2dp"
+        android:right="2dp"
+        android:top="2dp">
+        <clip>
+            <shape android:shape="rectangle">
+                <gradient
+                    android:angle="270"
+                    android:centerColor="#50BE5A"
+                    android:endColor="#50BE5A"
+                    android:startColor="#9BE07A"
+                    android:type="linear" />
+            </shape>
+        </clip>
+    </item>
+</layer-list>

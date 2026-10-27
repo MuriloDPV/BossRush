@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Botao em pixel art: estados desativado / pressionado / normal -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="false" android:drawable="@drawable/btn_espada_off" />
+    <item android:state_pressed="true" android:drawable="@drawable/btn_espada_press" />
+    <item android:drawable="@drawable/btn_espada" />
+</selector>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Painel escuro com borda de bronze para os textos da batalha -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <solid android:color="#D91B223C" />
+    <stroke android:width="2dp" android:color="#D0A36D" />
+    <corners android:radius="4dp" />
+</shape>

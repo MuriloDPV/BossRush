@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Boss Rush</string>
+    <string name="title_main">Boss Rush</string>
+    <string name="start_game">Nova partida</string>
+    <string name="continue_game">Continuar</string>
+    <string name="reset_progress">Reiniciar progresso</string>
+    <string name="sword_attack">Espada</string>
+    <string name="heal_action">Cura</string>
+</resources>

@@ -1,0 +1,1007 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Telas do Boss Rush em pixel art medieval. Só uma fica visível por vez (o código troca). -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0B1026">
+
+    <!-- Fundo das telas de menu: castelo à noite -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop"
+        android:src="@drawable/fundo_menu" />
+
+    <!-- ===== Tela inicial ===== -->
+    <LinearLayout
+        android:id="@+id/menuLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="20dp"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="380dp"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:contentDescription="Boss Rush"
+                android:src="@drawable/logo_boss_rush" />
+
+            <!-- Mantido para o código; o título agora é a imagem acima -->
+            <TextView
+                android:id="@+id/titleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/progressText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/hud_panel"
+                android:fontFamily="@font/pixelify"
+                android:gravity="center"
+                android:paddingStart="14dp"
+                android:paddingTop="6dp"
+                android:paddingEnd="14dp"
+                android:paddingBottom="6dp"
+                android:text="Progresso: 0/9 mestres"
+                android:textColor="#FFE08A"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/painel"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="18dp">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/startButton"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:background="@drawable/botao_madeira_sel"
+                android:fontFamily="@font/pixelify"
+                android:shadowColor="#000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="1"
+                android:stateListAnimator="@null"
+                android:text="Nova partida"
+                android:textAllCaps="false"
+                android:textColor="#FFF3D6"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/continueButton"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:background="@drawable/botao_madeira_sel"
+                android:fontFamily="@font/pixelify"
+                android:shadowColor="#000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="1"
+                android:stateListAnimator="@null"
+                android:text="Continuar"
+                android:textAllCaps="false"
+                android:textColor="#FFF3D6"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/settingsButton"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="0dp"
+                    android:layout_height="46dp"
+                    android:background="@drawable/botao_madeira_sel"
+                    android:fontFamily="@font/pixelify"
+                    android:shadowColor="#000000"
+                    android:shadowDx="2"
+                    android:shadowDy="2"
+                    android:shadowRadius="1"
+                    android:stateListAnimator="@null"
+                    android:text="Configurações"
+                    android:textAllCaps="false"
+                    android:textColor="#FFF3D6"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/codesButton"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="0dp"
+                    android:layout_height="46dp"
+                    android:background="@drawable/botao_madeira_sel"
+                    android:fontFamily="@font/pixelify"
+                    android:shadowColor="#000000"
+                    android:shadowDx="2"
+                    android:shadowDy="2"
+                    android:shadowRadius="1"
+                    android:stateListAnimator="@null"
+                    android:text="Códigos"
+                    android:textAllCaps="false"
+                    android:textColor="#FFF3D6"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/effectsButton"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="0dp"
+                    android:layout_height="46dp"
+                    android:background="@drawable/botao_madeira_sel"
+                    android:fontFamily="@font/pixelify"
+                    android:shadowColor="#000000"
+                    android:shadowDx="2"
+                    android:shadowDy="2"
+                    android:shadowRadius="1"
+                    android:stateListAnimator="@null"
+                    android:text="Efeitos"
+                    android:textAllCaps="false"
+                    android:textColor="#FFF3D6"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/resetButton"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="0dp"
+                    android:layout_height="46dp"
+                    android:background="@drawable/botao_madeira_sel"
+                    android:fontFamily="@font/pixelify"
+                    android:shadowColor="#000000"
+                    android:shadowDx="2"
+                    android:shadowDy="2"
+                    android:shadowRadius="1"
+                    android:stateListAnimator="@null"
+                    android:text="Reiniciar"
+                    android:textAllCaps="false"
+                    android:textColor="#FFF3D6"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- ===== Configurações ===== -->
+    <LinearLayout
+        android:id="@+id/settingsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="460dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/painel"
+            android:orientation="vertical"
+            android:paddingStart="24dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="16dp">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:fillViewport="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/jacquard"
+                        android:gravity="center"
+                        android:shadowColor="#672040"
+                        android:shadowDx="3"
+                        android:shadowDy="3"
+                        android:shadowRadius="1"
+                        android:text="Configurações"
+                        android:textColor="#FFE08A"
+                        android:textSize="34sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/pixelify"
+                            android:text="Efeitos sonoros"
+                            android:textColor="#F5F0E1"
+                            android:textSize="16sp"
+                            android:layout_weight="1" />
+
+                        <Switch
+                            android:id="@+id/soundSwitch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:thumbTint="#FFE08A"
+                            android:trackTint="#8A5A2E" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/pixelify"
+                        android:text="Volume dos efeitos sonoros"
+                        android:textColor="#F5F0E1"
+                        android:textSize="16sp"
+                        android:layout_marginTop="12dp" />
+
+                    <SeekBar
+                        android:id="@+id/volumeSeekBar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:max="100"
+                        android:progress="70"
+                        android:progressBackgroundTint="#3C1E28"
+                        android:progressTint="#D0A36D"
+                        android:thumbTint="#FFE08A" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/pixelify"
+                        android:text="Volume da música"
+                        android:textColor="#F5F0E1"
+                        android:textSize="16sp"
+                        android:layout_marginTop="12dp" />
+
+                    <SeekBar
+                        android:id="@+id/musicVolumeSeekBar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:max="100"
+                        android:progress="70"
+                        android:progressBackgroundTint="#3C1E28"
+                        android:progressTint="#D0A36D"
+                        android:thumbTint="#FFE08A" />
+                </LinearLayout>
+            </ScrollView>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/settingsBackButton"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="200dp"
+                android:layout_height="46dp"
+                android:background="@drawable/botao_madeira_sel"
+                android:fontFamily="@font/pixelify"
+                android:shadowColor="#000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="1"
+                android:stateListAnimator="@null"
+                android:text="Voltar"
+                android:textAllCaps="false"
+                android:textColor="#FFF3D6"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- ===== Códigos ===== -->
+    <LinearLayout
+        android:id="@+id/codesLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="12dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="520dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/painel"
+            android:orientation="vertical"
+            android:paddingStart="22dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="22dp"
+            android:paddingBottom="14dp">
+
+            <ScrollView
+                android:id="@+id/codesScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:fillViewport="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/jacquard"
+                        android:gravity="center"
+                        android:shadowColor="#672040"
+                        android:shadowDx="3"
+                        android:shadowDy="3"
+                        android:shadowRadius="1"
+                        android:text="Códigos"
+                        android:textColor="#FFE08A"
+                        android:textSize="34sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/codeInputEditText"
+                            android:layout_width="0dp"
+                            android:layout_height="48dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/campo_texto"
+                            android:fontFamily="@font/pixelify"
+                            android:hint="Digite o código"
+                            android:imeOptions="actionDone"
+                            android:importantForAutofill="no"
+                            android:inputType="textNoSuggestions"
+                            android:maxLines="1"
+                            android:paddingStart="14dp"
+                            android:paddingEnd="14dp"
+                            android:textColor="#FFF3D6"
+                            android:textColorHint="#9C8A9E"
+                            android:textCursorDrawable="@null"
+                            android:textSize="17sp" />
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/redeemCodeButton"
+                            style="@style/Widget.AppCompat.Button.Borderless"
+                            android:layout_width="150dp"
+                            android:layout_height="48dp"
+                            android:background="@drawable/botao_madeira_sel"
+                            android:fontFamily="@font/pixelify"
+                            android:shadowColor="#000000"
+                            android:shadowDx="2"
+                            android:shadowDy="2"
+                            android:shadowRadius="1"
+                            android:stateListAnimator="@null"
+                            android:text="Resgatar"
+                            android:textAllCaps="false"
+                            android:textColor="#FFF3D6"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:layout_marginStart="10dp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/codeStatusText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/pixelify"
+                        android:gravity="center"
+                        android:minHeight="22dp"
+                        android:text=""
+                        android:textColor="#FFE08A"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:fontFamily="@font/jacquard"
+                        android:text="Códigos desbloqueados"
+                        android:textColor="#FFE08A"
+                        android:textSize="24sp" />
+
+                    <LinearLayout
+                        android:id="@+id/unlockedCodesContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:orientation="vertical" />
+                </LinearLayout>
+            </ScrollView>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/codesBackButton"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="200dp"
+                android:layout_height="46dp"
+                android:background="@drawable/botao_madeira_sel"
+                android:fontFamily="@font/pixelify"
+                android:shadowColor="#000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="1"
+                android:stateListAnimator="@null"
+                android:text="Voltar"
+                android:textAllCaps="false"
+                android:textColor="#FFF3D6"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- ===== Efeitos ===== -->
+    <LinearLayout
+        android:id="@+id/effectsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="12dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="560dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/painel"
+            android:orientation="vertical"
+            android:paddingStart="22dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="22dp"
+            android:paddingBottom="14dp">
+
+            <ScrollView
+                android:id="@+id/effectsScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:fillViewport="true">
+
+                <LinearLayout
+                    android:id="@+id/effectsContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="8dp" />
+            </ScrollView>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/effectsBackButton"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="200dp"
+                android:layout_height="46dp"
+                android:background="@drawable/botao_madeira_sel"
+                android:fontFamily="@font/pixelify"
+                android:shadowColor="#000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="1"
+                android:stateListAnimator="@null"
+                android:text="Voltar"
+                android:textAllCaps="false"
+                android:textColor="#FFF3D6"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/battleLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#1B223C"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <!-- Cenário da área atual (Reino, Planície, Floresta Densa, Caverna) -->
+            <ImageView
+                android:id="@+id/arenaBackground"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@null"
+                android:scaleType="centerCrop"
+                android:src="@drawable/area_reino" />
+
+            <!-- Herói (altura ajustada no código) -->
+            <ImageView
+                android:id="@+id/heroSprite"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="56dp"
+                android:layout_marginBottom="12dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="Herói"
+                android:src="@drawable/heroi" />
+
+            <!-- Chefe atual (imagem e altura trocadas no código) -->
+            <ImageView
+                android:id="@+id/bossSprite"
+                android:layout_width="wrap_content"
+                android:layout_height="120dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="28dp"
+                android:layout_marginBottom="12dp"
+                android:layout_toStartOf="@+id/actionGroup"
+                android:adjustViewBounds="true"
+                android:contentDescription="Chefe"
+                android:src="@drawable/chefe_bandido" />
+
+            <TextView
+                android:id="@+id/bossNameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/hud_panel"
+                android:paddingStart="14dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="14dp"
+                android:paddingBottom="4dp"
+                android:shadowColor="#000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="1"
+                android:text="Reino — Bandido"
+                android:textColor="#FFE08A"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/playerStatusColumn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="56dp"
+                android:background="@drawable/hud_panel"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Herói  "
+                        android:textColor="#FFE08A"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/playerHpText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="100/100"
+                        android:textColor="#F5F0E1"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/playerHealthBar"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="200dp"
+                    android:layout_height="12dp"
+                    android:layout_marginTop="4dp"
+                    android:max="100"
+                    android:progress="100"
+                    android:progressBackgroundTint="#3C1E28"
+                    android:progressTint="#50BE5A" />
+
+                <TextView
+                    android:id="@+id/playerStatusText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="efeitos no herói:"
+                    android:textColor="#F5F0E1"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/healText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="quantidade de cura: 3"
+                    android:textColor="#F5F0E1"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/specialAttackText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="ataque especial: disponível"
+                    android:textColor="#F5F0E1"
+                    android:textSize="13sp" />
+
+                <!-- Mantido para o código, mas escondido (repetia a linha de cima) -->
+                <TextView
+                    android:id="@+id/specialAttackCooldownText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="disponível"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/bossStatusColumn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="56dp"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/hud_panel"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chefe  "
+                        android:textColor="#FFE08A"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/bossHpText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0/0"
+                        android:textColor="#F5F0E1"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/bossHealthBar"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="200dp"
+                    android:layout_height="12dp"
+                    android:layout_marginTop="4dp"
+                    android:max="100"
+                    android:progress="100"
+                    android:progressBackgroundTint="#3C1E28"
+                    android:progressTint="#E04A4A" />
+
+                <TextView
+                    android:id="@+id/bossStatusText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="efeitos no chefe"
+                    android:textColor="#F5F0E1"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/cardCountText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="cartas: 0"
+                    android:textColor="#F5F0E1"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/battleSettingsButton"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/btn_config_sel"
+                android:contentDescription="Configurações" />
+
+            <!-- Botões de ação em pixel art (2x2) -->
+            <LinearLayout
+                android:id="@+id/actionGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/specialAttackButton"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/btn_especial_sel"
+                        android:contentDescription="Ataque especial" />
+
+                    <ImageButton
+                        android:id="@+id/healButton"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginStart="10dp"
+                        android:background="@drawable/btn_cura_sel"
+                        android:contentDescription="Cura" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/shieldButton"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/btn_escudo_sel"
+                        android:contentDescription="Escudo" />
+
+                    <ImageButton
+                        android:id="@+id/swordButton"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginStart="10dp"
+                        android:background="@drawable/btn_espada_sel"
+                        android:contentDescription="Espada" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/statusText"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <!-- ===== Escolha de carta ===== -->
+
+    <!-- ===== Escolha de carta ===== -->
+    <LinearLayout
+        android:id="@+id/cardLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#99000000"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/jacquard"
+            android:gravity="center"
+            android:shadowColor="#672040"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:shadowRadius="1"
+            android:text="Escolha uma carta"
+            android:textColor="#FFE08A"
+            android:textSize="38sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="12dp">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cardButtonA"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="0dp"
+                android:layout_height="230dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/carta_espada_sel"
+                android:fontFamily="@font/pixelify"
+                android:gravity="center"
+                android:lineSpacingExtra="2dp"
+                android:paddingStart="16dp"
+                android:paddingTop="26dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="14dp"
+                android:stateListAnimator="@null"
+                android:textAllCaps="false"
+                android:textColor="#3A2418"
+                android:textSize="14sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cardButtonB"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="0dp"
+                android:layout_height="230dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/carta_escudo_sel"
+                android:fontFamily="@font/pixelify"
+                android:gravity="center"
+                android:lineSpacingExtra="2dp"
+                android:paddingStart="16dp"
+                android:paddingTop="26dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="14dp"
+                android:stateListAnimator="@null"
+                android:textAllCaps="false"
+                android:textColor="#3A2418"
+                android:textSize="14sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cardButtonC"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="0dp"
+                android:layout_height="230dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/carta_especial_sel"
+                android:fontFamily="@font/pixelify"
+                android:gravity="center"
+                android:lineSpacingExtra="2dp"
+                android:paddingStart="16dp"
+                android:paddingTop="26dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="14dp"
+                android:stateListAnimator="@null"
+                android:textAllCaps="false"
+                android:textColor="#3A2418"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- ===== Vitória ===== -->
+    <LinearLayout
+        android:id="@+id/victoryLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#66000000"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="460dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/painel"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="22dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/jacquard"
+                android:gravity="center"
+                android:shadowColor="#672040"
+                android:shadowDx="3"
+                android:shadowDy="3"
+                android:shadowRadius="1"
+                android:text="Vitória!"
+                android:textColor="#FFE08A"
+                android:textSize="44sp" />
+
+            <TextView
+                android:id="@+id/victoryText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/pixelify"
+                android:gravity="center"
+                android:text="Chefe derrotado!"
+                android:textColor="#F5F0E1"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/nextBossButton"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="240dp"
+                android:layout_height="46dp"
+                android:background="@drawable/botao_madeira_sel"
+                android:fontFamily="@font/pixelify"
+                android:shadowColor="#000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="1"
+                android:stateListAnimator="@null"
+                android:text="Próximo chefe"
+                android:textAllCaps="false"
+                android:textColor="#FFF3D6"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginTop="18dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/menuButton"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="240dp"
+                android:layout_height="46dp"
+                android:background="@drawable/botao_madeira_sel"
+                android:fontFamily="@font/pixelify"
+                android:shadowColor="#000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="1"
+                android:stateListAnimator="@null"
+                android:text="Voltar ao menu"
+                android:textAllCaps="false"
+                android:textColor="#FFF3D6"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp" />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

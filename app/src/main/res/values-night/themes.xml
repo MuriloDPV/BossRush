@@ -1,0 +1,13 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.BossRush" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Fonte pixel em todo o app + cores medievais -->
+        <item name="android:fontFamily">@font/pixelify</item>
+        <item name="fontFamily">@font/pixelify</item>
+        <item name="colorPrimary">#D0A36D</item>
+        <item name="colorAccent">#D0A36D</item>
+        <item name="android:windowBackground">@android:color/black</item>
+        <!-- Customize your dark theme here. -->
+        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+    </style>
+</resources>
